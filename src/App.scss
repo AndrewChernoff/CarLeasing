@@ -28,7 +28,7 @@ h2 {
 
     &__item {
 
-      &-cost {
+      &-cost {//mixin
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -40,14 +40,14 @@ h2 {
         box-sizing: border-box;
         margin-bottom: -15px;
 
-         div {
+        div {
           font-weight: 900;
           font-size: 30px;
           line-height: 36px;
           color: #575757;
-        } 
+        }
 
-        input[type=text] {
+        .calc__block__item-wideInput {
           border: none;
           width: 140px;
           font-weight: 900;
@@ -59,16 +59,28 @@ h2 {
         }
       }
 
-      &-percent {
+      .percent__wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px;
         width: 69px;
         height: 54px;
-        background: #EBEBEC;
+        background: #F3F3F4;
         border-radius: 16px;
-      }      
+      }
+
+      &-percentInput {
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+        border: none;
+        width: 40px;
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 36px;
+        color: #575757;
+        outline: none;
+        background: #F3F3F4;
+      }
 
       input[type=range] {
         height: 2px;
@@ -91,6 +103,12 @@ h2 {
         margin: -7px 0 0 0;
         outline: none;
       }
+
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
     }
   }
 
@@ -121,10 +139,17 @@ h2 {
 
       border: none;
       font-weight: 900;
-font-size: 30px;
-color: #FFFFFF;
-
-
+      font-size: 30px;
+      color: #FFFFFF;
+      &:hover {
+        background: #111111;
+      }
+      &:active {
+        background: #575757;
+      }
+      &:disabled {
+        background: rgba(255, 149, 20, 0.4);
+      }
     }
 
   }
