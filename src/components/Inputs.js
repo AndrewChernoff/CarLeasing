@@ -8,12 +8,14 @@ const Inputs = ({cost, downpayment, leasing, downpaymentSum, isRequest, setCost,
         <div className="calc__block__item-cost">
           <input disabled={isRequest}
             className="calc__block__item-wideInput"
-            onClick={() => setIsActive(true)}
+            //onClick={() => setIsActive(true)}
             onChange={(e) => {
               setCost(Number(e.currentTarget.value));
             }}
-            onBlur={cost < 1000000 || cost > 6000000 ? setCost(1000000) : null}
+            onBlur={() => cost < 1000000 || cost > 6000000 ? setCost(1000000) : null}
             type="number"
+            min="1000000"
+            max="6000000"
             value={cost}
           />
           <div>&#8381;</div>
@@ -25,6 +27,7 @@ const Inputs = ({cost, downpayment, leasing, downpaymentSum, isRequest, setCost,
           name="points"
           min="1000000"
           max="6000000"
+          value={`${cost}`}
         />
       </div>
 
@@ -47,6 +50,8 @@ const Inputs = ({cost, downpayment, leasing, downpaymentSum, isRequest, setCost,
                 }
                 type="number"
                 value={`${downpayment}`}
+                min="10"
+                max="60"
               />
               %
             </div>
@@ -59,6 +64,7 @@ const Inputs = ({cost, downpayment, leasing, downpaymentSum, isRequest, setCost,
           name="points"
           min="10"
           max="60"
+          value={`${downpayment}`}
         />
       </div>
 
@@ -68,11 +74,12 @@ const Inputs = ({cost, downpayment, leasing, downpaymentSum, isRequest, setCost,
           <input disabled={isRequest}
             className="calc__block__item-wideInput"
             onChange={(e) => {
-                if(e.currentTarget.value < 1) e.currentTarget.value = 1
               setLeasing(Number(e.currentTarget.value));
             }}
-            onBlur={() => (leasing < 1 || leasing > 60 ? setLeasing(1) : null)}
+            onBlur={() => leasing < 1 || leasing > 60? setLeasing(1): null }
             type="number"
+            min="1"
+          max="60"
             value={leasing}
           />
           <div>мес.</div>
@@ -84,6 +91,7 @@ const Inputs = ({cost, downpayment, leasing, downpaymentSum, isRequest, setCost,
           name="points"
           min="1"
           max="60"
+          value={`${leasing}`}
         />
       </div>
     </div>

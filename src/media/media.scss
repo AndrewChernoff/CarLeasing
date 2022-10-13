@@ -1,0 +1,52 @@
+@media (max-width: 1440px) {
+  .calc {
+    &__block {
+      &__item {
+        &-cost {
+          width: 320px;
+        }
+      }
+
+      input[type=range] {
+        width: 285px;
+      }
+    }
+
+    &__contract {
+      &_block {
+        min-width: 229px;
+      }
+
+      button {
+        width: 320px;
+      }
+    }
+    &__contract {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .container {
+    margin: 64px auto;
+    max-width: 700px;///
+  }
+
+  .calc {
+    &__block {
+      flex-direction: column;
+      &__item {
+        &-cost {
+          width: 696px;
+        }
+      }
+      input[type=range] {
+        width: 600px;
+    }
+    }
+    &__contract {
+      flex-wrap: wrap;
+    }
+  }
+}
