@@ -8,30 +8,16 @@ const App = () => {
   const [downpayment, setDownpayment] = useState(10);
   const [leasing, setLeasing] = useState(1);
   const [isRequest, setIsRequest] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [isActiveCost, setIsActiveCost] = useState(false);
+  const [isActiveDownpayment, setIsActiveDownpayment] = useState(false);
+  const [isActiveLeasing, setIsActiveLeasing] = useState(false);
 
   const downpaymentSum = Number((cost * (downpayment / 100)).toFixed(0));
 
-   const monthPay = (cost - downpaymentSum) * ((0.035 * Math.pow((1 + 0.035),
-    leasing)) / (Math.pow((1 + 0.035), leasing) - 1)); 
+   const monthPay = ((cost - downpaymentSum) * ((0.035 * Math.pow((1 + 0.035),
+    leasing)) / (Math.pow((1 + 0.035), leasing) - 1))).toFixed(0); 
 
   const contractSum = Number(downpaymentSum + (leasing * monthPay)).toFixed(0);
-
-  console.log(`${((cost - downpaymentSum) *
-    ((0.035 * Math.pow(1 + 0.035, leasing))) /
-      (Math.pow(1 + 0.035, leasing) - 1))
-}`)
-console.log(cost)
-console.log(downpaymentSum)
-console.log(leasing)
-console.log(monthPay)
-console.log(((cost - downpaymentSum) *
-((0.035 * Math.pow(1 + 0.035, leasing)))))
-
-  /* const blurEvent = () => {
-    if (cost < 1000000 || cost > 6000000) setCost(1000000);
-    setIsActive(false);
-  }; */
 
   const sendData = (e) => {
       e.preventDefault();
@@ -45,6 +31,14 @@ console.log(((cost - downpaymentSum) *
         monthly_payment_from: monthPay,
       }).then(() => setIsRequest(false)) 
     } 
+
+  const isMaxNumber = (param) => {
+    if(cost > 6000000 || downpayment > 60) {
+      return 'Слишком большие значения'
+    } else {
+      return param
+    }
+  }
   
 
   return (
@@ -54,8 +48,11 @@ console.log(((cost - downpaymentSum) *
           Рассчитайте стоимость автомобиля в лизинг
         </h1>
 
-        <Inputs setCost={setCost} setDownpayment={setDownpayment} setLeasing={setLeasing} setIsActive={setIsActive}
-        cost={cost} downpayment={downpayment} leasing={leasing} downpaymentSum={downpaymentSum} isRequest={isRequest}
+        <Inputs setCost={setCost} setDownpayment={setDownpayment} setLeasing={setLeasing}
+        cost={cost} downpayment={downpayment} leasing={leasing} downpaymentSum={downpaymentSum} isRequest={isRequest} isActiveCost={isActiveCost}
+        setIsActiveCost={setIsActiveCost}
+        isActiveDownpayment={isActiveDownpayment} setIsActiveDownpayment={setIsActiveDownpayment}
+        isActiveLeasing={isActiveLeasing} setIsActiveLeasing={setIsActiveLeasing}
         />
 
         <div className="calc__contract">
@@ -64,7 +61,7 @@ console.log(((cost - downpaymentSum) *
               Сумма договора лизинга
             </h2>
             <div className="calc__contract_block-price">
-              {contractSum} &#8381;
+            {isMaxNumber(contractSum)} &#8381;
             </div>
           </div>
 
@@ -73,7 +70,7 @@ console.log(((cost - downpaymentSum) *
               Ежемесячный платеж от
             </h2>
             <div className="calc__contract_block-price">
-              {monthPay.toFixed(0)} &#8381;
+              {isMaxNumber(monthPay)} &#8381;
             </div>
           </div>
 
