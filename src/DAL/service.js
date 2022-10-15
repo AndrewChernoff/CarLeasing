@@ -1,5 +1,5 @@
 export const postData = async (url, data) => {
-  const response = await fetch(url, {
+   const response = await fetch(url, {
     method: "POST",
     mode: "no-cors",
     headers: {

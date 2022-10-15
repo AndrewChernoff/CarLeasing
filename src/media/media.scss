@@ -233,6 +233,21 @@
 @media (max-width: 420px) {
   .calc {
     &__title {
+      margin-left: -45px;
+      width: 242px;
+      height: 155px;
+      text-align: left;
+    }
+
+    &__contract {
+      margin: 16px 0 0 -35px;
+    }
+  }
+}
+
+@media (max-width: 340px) {
+  .calc {
+    &__title {
       margin-left: -70px;
       width: 242px;
       height: 155px;
