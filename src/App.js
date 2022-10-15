@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.scss";
+import preloader from './assets/img/preloader.gif';
 import Inputs from "./components/Inputs";
 import { postData } from "./DAL/service";
 
@@ -14,22 +15,27 @@ const App = () => {
 
   const downpaymentSum = Number((cost * (downpayment / 100)).toFixed(0));
 
-   const monthPay = ((cost - downpaymentSum) * ((0.035 * Math.pow((1 + 0.035),
-    leasing)) / (Math.pow((1 + 0.035), leasing) - 1))).toFixed(0); 
+   const monthPay = Number(((cost - downpaymentSum) * ((0.035 * Math.pow((1 + 0.035),
+    leasing)) / (Math.pow((1 + 0.035), leasing) - 1)))).toFixed(0); 
 
   const contractSum = Number(downpaymentSum + (leasing * monthPay)).toFixed(0);
 
   const sendData = (e) => {
       e.preventDefault();
       setIsRequest(true);
-       postData("https://shoppingcart-379da-default-rtdb.firebaseio.com/cartItems.json", {
+       postData("https://hookb.in/eK160jgYJ6UlaRPldJ1P", {
         car_coast: cost,
         initail_payment: downpaymentSum,
         initail_payment_percent: downpayment,
         lease_term: leasing,
         total_sum: 5000000,
         monthly_payment_from: monthPay,
-      }).then(() => setIsRequest(false)) 
+      })
+      .then(() => setIsRequest(false))
+      .catch(() => {
+        alert('Что-то пошло не так!')
+        setIsRequest(false);
+      }) 
     } 
 
   const isMaxNumber = (param) => {
@@ -39,7 +45,6 @@ const App = () => {
       return param
     }
   }
-  
 
   return (
     <div className="calc">
@@ -77,7 +82,7 @@ const App = () => {
           <button disabled={isRequest}
             onClick={sendData}
           >
-            Оставить заявку
+          {isRequest? <img src={preloader} style={{maxWidth: '50px'}} alt='Loading...'/> : 'Оставить заявку'}  
           </button>
         </div>
       </div>

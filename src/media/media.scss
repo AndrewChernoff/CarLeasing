@@ -50,6 +50,7 @@
   .calc {
     &__title {
       margin-left: 37px;
+      height: 118px;
     }
 
     &__block {
@@ -77,12 +78,11 @@
 @media (max-width: 768px) {
   .container {
     margin: 64px auto;
-    max-width: 700px;
+    max-width: 625px;
   }
 
   .calc {
     &__block {
-
       &__item {
         &-cost {
           width: 696px;
@@ -161,15 +161,19 @@
   .container {
     max-width: 500px;
     padding: 0 44px;
-    margin: 44px 20px 64px 20px;
+    //margin: 44px 20px 64px 20px;
+    margin: 45px 50px 64px 50px;
   }
 
   .calc {
     &__title {
       margin-left: 0;
       margin-top: 0;
-      width: 242px;
-      height: 155px
+      //width: 242px;
+      //height: 155px
+      width: 300px;
+      height: 155px;
+      text-align: center;
     }
 
     h2 {
@@ -204,7 +208,8 @@
     }
 
     &__contract {
-      margin: 16px 0 0 0;
+      //margin: 16px 0 0 0;
+      margin: 16px 0 0 40px;
 
       &_block {
         width: 167px;
@@ -221,6 +226,21 @@
         height: 60px;
         font-size: 19px;
       }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .calc {
+    &__title {
+      margin-left: -70px;
+      width: 242px;
+      height: 155px;
+      text-align: left;
+    }
+
+    &__contract {
+      margin: 16px 0 0 -70px;
     }
   }
 }
