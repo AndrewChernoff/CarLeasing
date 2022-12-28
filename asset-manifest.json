@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/carleasing/static/css/main.6f0371bb.css",
+    "main.js": "/carleasing/static/js/main.fa121dec.js",
+    "static/js/787.28cb0dcd.chunk.js": "/carleasing/static/js/787.28cb0dcd.chunk.js",
+    "static/media/Nekst-Bold.otf": "/carleasing/static/media/Nekst-Bold.29cb664a96e7ea003885.otf",
+    "static/media/Nekst-Regular.otf": "/carleasing/static/media/Nekst-Regular.5189b13826111ed19997.otf",
+    "static/media/Gilroy-Regular.ttf": "/carleasing/static/media/Gilroy-Regular.fa652e766b6a85a1f9cb.ttf",
+    "static/media/preloader.gif": "/carleasing/static/media/preloader.f9601ac812a578d00bba.gif",
+    "index.html": "/carleasing/index.html",
+    "main.6f0371bb.css.map": "/carleasing/static/css/main.6f0371bb.css.map",
+    "main.fa121dec.js.map": "/carleasing/static/js/main.fa121dec.js.map",
+    "787.28cb0dcd.chunk.js.map": "/carleasing/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f0371bb.css",
+    "static/js/main.fa121dec.js"
+  ]
+}
